@@ -35,7 +35,7 @@ namespace flanky
 
     char getChar(char* a, int pos)
     {
-        if (pos > flanky::length(a))
+        if (pos > length(a))
         {
             return '\0';
         }
@@ -46,6 +46,21 @@ namespace flanky
             pos--;
         }
         return *a;
+    }
+
+    void setChar(char* a, int pos, const char& b)
+    {
+        if (pos > length(a))
+        {
+            return;
+        }
+
+        while (pos != 0)
+        {
+            a++;
+            pos--;
+        }
+        *a = b;
     }
 }
 

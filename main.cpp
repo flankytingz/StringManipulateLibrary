@@ -8,7 +8,7 @@ int main() {
     cout << "Hello, World!" << std::endl;
     char text[] = "Hello";
     char text1[] = "World!";
-    cout << f::getChar(text, 1);
-    cout << f::getChar(text, 5);
+    f::setChar(text, 2, 'B');
+    cout << text;
     return 0;
 }
