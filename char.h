@@ -62,6 +62,20 @@ namespace flanky
         }
         *a = b;
     }
+
+    bool isEqual(char* a, char* b)
+    {
+        if (flanky::length(a) != flanky::length(b))
+            return false;
+
+        for (int i = 0; i < flanky::length(a); i++)
+            if (*a != *b)
+                return false;
+            else
+                a++,b++;
+
+        return true;
+    }
 }
 
 #endif //CS101_PROJECT_CHAR_H
