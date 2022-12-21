@@ -76,6 +76,16 @@ namespace flanky
 
         return true;
     }
+
+    bool isGreater(char* a, char* b)
+    {
+        return (flanky::length(a) > flanky::length(b));
+    }
+
+    bool isSmaller(char* a, char* b)
+    {
+        return (flanky::length(a) < flanky::length(b));
+    }
 }
 
 #endif //CS101_PROJECT_CHAR_H
