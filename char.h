@@ -32,6 +32,21 @@ namespace flanky
         }
         *a = '\0';
     }
+
+    char getChar(char* a, int pos)
+    {
+        if (pos > flanky::length(a))
+        {
+            return '\0';
+        }
+
+        while (pos != 0)
+        {
+            a++;
+            pos--;
+        }
+        return *a;
+    }
 }
 
 #endif //CS101_PROJECT_CHAR_H

@@ -8,8 +8,7 @@ int main() {
     cout << "Hello, World!" << std::endl;
     char text[] = "Hello";
     char text1[] = "World!";
-    cout << f::length(text);
-    f::addEql(text, text1);
-    cout << text;
+    cout << f::getChar(text, 1);
+    cout << f::getChar(text, 5);
     return 0;
 }
