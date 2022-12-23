@@ -1,7 +1,3 @@
-//
-// Created by Flanky on 12/21/2022.
-//
-
 #ifndef CS101_PROJECT_CHAR_H
 #define CS101_PROJECT_CHAR_H
 
@@ -16,6 +12,28 @@ namespace flanky
             a++;
         }
         return length;
+    }
+
+    char* add(char* s1, char* s2)
+    {
+        int length_s1 = flanky::length(s1);
+        int length_s2 = flanky::length(s2);
+
+        char* str = reinterpret_cast<char*>(malloc((sizeof(char) * (length_s1+length_s2 + 1))));
+
+        for (int i = 0; i < length_s1; i++)
+        {
+            str[i] = s1[i];
+        }
+
+        for (int i = 0; i < length_s2; i++)
+        {
+            str[i + length_s1] = s2[i];
+        }
+
+        str[length_s1 + length_s2] = '\0';
+
+        return str;
     }
 
     void addEql(char* a, char* b)
@@ -40,27 +58,17 @@ namespace flanky
             return '\0';
         }
 
-        while (pos != 0)
-        {
-            a++;
-            pos--;
-        }
-        return *a;
+        return a[pos];
     }
 
     void setChar(char* a, int pos, const char& b)
     {
-        if (pos > length(a))
+        if (pos > flanky::length(a))
         {
             return;
         }
 
-        while (pos != 0)
-        {
-            a++;
-            pos--;
-        }
-        *a = b;
+        a[pos] = b;
     }
 
     bool isEqual(char* a, char* b)

@@ -8,7 +8,11 @@ int main() {
     cout << "Hello, World!" << std::endl;
     char text[] = "Hell";
     char text1[] = "Hello";
-    cout << f::isGreater(text, text1);
-    cout << f::isSmaller(text, text1);
+    char* str = f::add(text, text1);
+    while (*str != '\0')
+    {
+        cout << *str;
+        str++;
+    }
     return 0;
 }
