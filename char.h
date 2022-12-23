@@ -94,6 +94,22 @@ namespace flanky
     {
         return (flanky::length(str1) < flanky::length(str2));
     }
+
+    char* getSubstring(char* str, const int pos, const int n)
+    {
+        if (pos > n) return nullptr;
+
+        char* sub_str = reinterpret_cast<char*>(malloc((sizeof(char) * (n + 1))));
+
+        for (int i = pos; i < n; i++) {
+            sub_str[i - pos] = str[i];
+            str[i] = '\0';
+        }
+
+        sub_str[n] = '\0';
+
+        return sub_str;
+    }
 }
 
 #endif //CS101_PROJECT_CHAR_H
