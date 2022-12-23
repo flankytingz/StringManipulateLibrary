@@ -8,15 +8,16 @@ int main() {
     cout << "Hello, World!" << std::endl;
     char text[] = "Hell";
     char text1[] = "Hello";
-    char* str = f::getSubstring(text, 0, 2);
+    char* str = f::shiftRight(text, 2);
+
     while (*str != '\0')
     {
-        cout << *str;
+        cout << *str << endl;
         str++;
     }
 
     cout << endl;
 
-    for (const char letter : text) cout << letter;
+    for (const char& letter : text) cout << letter;
     return 0;
 }
