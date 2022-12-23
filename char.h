@@ -3,32 +3,32 @@
 
 namespace flanky
 {
-    int length(char* a)
+    int length(char* str)
     {
         int length = 0;
-        while (*a != '\0')
+        while (*str != '\0')
         {
             length++;
-            a++;
+            str++;
         }
         return length;
     }
 
-    char* add(char* s1, char* s2)
+    char* add(char* str1, char* str2)
     {
-        int length_s1 = flanky::length(s1);
-        int length_s2 = flanky::length(s2);
+        int length_s1 = flanky::length(str1);
+        int length_s2 = flanky::length(str2);
 
         char* str = reinterpret_cast<char*>(malloc((sizeof(char) * (length_s1+length_s2 + 1))));
 
         for (int i = 0; i < length_s1; i++)
         {
-            str[i] = s1[i];
+            str[i] = str1[i];
         }
 
         for (int i = 0; i < length_s2; i++)
         {
-            str[i + length_s1] = s2[i];
+            str[i + length_s1] = str2[i];
         }
 
         str[length_s1 + length_s2] = '\0';
@@ -36,63 +36,63 @@ namespace flanky
         return str;
     }
 
-    void addEql(char* a, char* b)
+    void addEql(char* str1, char* str2)
     {
-        while (*a != '\0')
+        while (*str1 != '\0')
         {
-            a++;
+            str1++;
         }
-        while (*b != '\0')
+        while (*str2 != '\0')
         {
-            *a = *b;
-            a++;
-            b++;
+            *str1 = *str2;
+            str1++;
+            str2++;
         }
-        *a = '\0';
+        *str1 = '\0';
     }
 
-    char getChar(char* a, int pos)
+    char getChar(char* str, int pos)
     {
-        if (pos > length(a))
+        if (pos > length(str))
         {
             return '\0';
         }
 
-        return a[pos];
+        return str[pos];
     }
 
-    void setChar(char* a, int pos, const char& b)
+    void setChar(char* str, int pos, const char& letter)
     {
-        if (pos > flanky::length(a))
+        if (pos > flanky::length(str))
         {
             return;
         }
 
-        a[pos] = b;
+        str[pos] = letter;
     }
 
-    bool isEqual(char* a, char* b)
+    bool isEqual(char* str1, char* str2)
     {
-        if (flanky::length(a) != flanky::length(b))
+        if (flanky::length(str1) != flanky::length(str2))
             return false;
 
-        for (int i = 0; i < flanky::length(a); i++)
-            if (*a != *b)
+        for (int i = 0; i < flanky::length(str1); i++)
+            if (*str1 != *str2)
                 return false;
             else
-                a++,b++;
+                str1++,str2++;
 
         return true;
     }
 
-    bool isGreater(char* a, char* b)
+    bool isGreater(char* str1, char* str2)
     {
-        return (flanky::length(a) > flanky::length(b));
+        return (flanky::length(str1) > flanky::length(str2));
     }
 
-    bool isSmaller(char* a, char* b)
+    bool isSmaller(char* str1, char* str2)
     {
-        return (flanky::length(a) < flanky::length(b));
+        return (flanky::length(str1) < flanky::length(str2));
     }
 }
 
