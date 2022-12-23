@@ -1,5 +1,5 @@
 #include <iostream>
-#include "char.h"
+#include "string_flanky.h"
 
 using namespace std;
 namespace f = flanky;

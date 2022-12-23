@@ -1,5 +1,5 @@
-#ifndef CS101_PROJECT_CHAR_H
-#define CS101_PROJECT_CHAR_H
+#ifndef CS101_PROJECT_STRING_FLANKY_H
+#define CS101_PROJECT_STRING_FLANKY_H
 
 namespace flanky
 {
@@ -151,4 +151,4 @@ namespace flanky
     }
 }
 
-#endif //CS101_PROJECT_CHAR_H
+#endif //CS101_PROJECT_STRING_FLANKY_H
