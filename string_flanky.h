@@ -16,57 +16,46 @@ namespace flanky
 
     char* add(char* str1, char* str2)
     {
-        const int length_s1 = flanky::length(str1);
-        const int length_s2 = flanky::length(str2);
+        const int length_str1 = flanky::length(str1);
+        const int length_str2 = flanky::length(str2);
 
-        char* str = reinterpret_cast<char*>(malloc((sizeof(char) * (length_s1+length_s2 + 1))));
+        char* str = reinterpret_cast<char*>(malloc((sizeof(char) * (length_str1 + length_str2 + 1))));
 
-        for (int i = 0; i < length_s1; i++)
-        {
-            str[i] = str1[i];
-        }
+        for (int i = 0; i < length_str1; i++) str[i] = str1[i];
 
-        for (int i = 0; i < length_s2; i++)
-        {
-            str[i + length_s1] = str2[i];
-        }
+        for (int i = 0; i < length_str2; i++) str[i + length_str1] = str2[i];
 
-        str[length_s1 + length_s2] = '\0';
+        str[length_str1 + length_str2] = '\0';
 
         return str;
     }
 
-    void addEql(char* str1, char* str2)
+    void addEql(char* &str1, char* str2)
     {
-        while (*str1 != '\0')
-        {
-            str1++;
-        }
-        while (*str2 != '\0')
-        {
-            *str1 = *str2;
-            str1++;
-            str2++;
-        }
-        *str1 = '\0';
+        int length_s1 = flanky::length(str1);
+        int length_s2 = flanky::length(str2);
+
+        char* str = static_cast<char*>(malloc(sizeof(char) * (length_s1 + length_s2 + 1)));
+
+        for (int i = 0; i < length_s1; i++) str[i] = str1[i];
+        for (int i = 0; i < length_s2; i++) str[i + length_s1] = str2[i];
+
+        str[length_s1 + length_s2] = '\0';
+
+        free(str1);
+        str1 = str;
     }
 
     char getChar(char* str, int pos)
     {
-        if (pos > length(str))
-        {
-            return '\0';
-        }
+        if (pos > length(str)) return '\0';
 
         return str[pos];
     }
 
-    void setChar(char* str, int pos, const char& letter)
+    void setChar(char* &str, int pos, const char& letter)
     {
-        if (pos > flanky::length(str))
-        {
-            return;
-        }
+        if (pos > flanky::length(str)) return;
 
         str[pos] = letter;
     }
@@ -101,51 +90,53 @@ namespace flanky
         if (n > flanky::length(str)) return nullptr;
         if (n < 1) return nullptr;
 
-        char* sub_str = reinterpret_cast<char*>(malloc((sizeof(char) * (n + 1))));
+        char* sub_str = static_cast<char*>(malloc((sizeof(char) * (n + 1))));
 
-        for (int i = pos; i < n; i++) {
-            sub_str[i - pos] = str[i];
-            str[i] = '\0';
-        }
+        for (int i = pos; i < n; i++) sub_str[i - pos] = str[i];
 
         sub_str[n] = '\0';
 
         return sub_str;
     }
 
-    char* shiftLeft(char* str, const int n = 1)
+    char* shiftLeft(char* &str, const int n = 1)
     {
-        if (n > flanky::length(str)) return nullptr;
+        int length_str = flanky::length(str);
+        if (n > length_str) return nullptr;
         if (n < 1) return nullptr;
 
-        char* sub_str = reinterpret_cast<char*>(malloc((sizeof(char) * (n + 1))));
+        char* sub_str = static_cast<char*>(malloc((sizeof(char) * (n + 1))));
+        char* _str = static_cast<char*>(malloc((sizeof(char) * (length_str - n + 1))));
 
-        for (int i = 0; i < n; i++)
-        {
-            sub_str[i] = str[i];
-            str[i] = '\0';
-        }
+        for (int i = 0; i < n; i++) sub_str[i] = str[i];
+        for (int i = n; i < length_str; i++) _str[i - n] = str[i];
 
         sub_str[n] = '\0';
+        _str[length_str - n] = '\0';
+
+        free(str);
+        str = _str;
 
         return sub_str;
     }
 
-    char* shiftRight(char* str, const int n = 1)
+    char* shiftRight(char* &str, const int n = 1)
     {
         const int length_str = flanky::length(str);
         if (n > length_str) return nullptr;
         if (n < 1) return nullptr;
 
         char* sub_str = reinterpret_cast<char*>(malloc((sizeof(char) * (n + 1))));
+        char* _str = reinterpret_cast<char*>(malloc((sizeof(char) * (length_str - n + 1))));
 
-        for (int i = 0; i < n; i++)
-        {
-            sub_str[i] = str[(length_str - 1) - i];
-            str[(length_str - 1) - i] = '\0';
-        }
+        for (int i = 0; i < n; i++) sub_str[i] = str[(length_str - 1) - i];
+        for (int i = 0; i < length_str - n; i++) _str[i] = str[i];
 
         sub_str[n] = '\0';
+        _str[length_str - n] = '\0';
+
+        free(str);
+        str = _str;
 
         return sub_str;
     }
