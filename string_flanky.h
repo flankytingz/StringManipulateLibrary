@@ -92,7 +92,7 @@ namespace flanky
 
         char* sub_str = static_cast<char*>(malloc((sizeof(char) * (n + 1))));
 
-        for (int i = pos; i < n; i++) sub_str[i - pos] = str[i];
+        for (int i = pos; i < n + pos; i++) sub_str[i - pos] = str[i];
 
         sub_str[n] = '\0';
 
