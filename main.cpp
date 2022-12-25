@@ -7,12 +7,6 @@ char* str;
 char* str1 = static_cast<char *>(malloc(sizeof(char) * 6));
 char* str2 = static_cast<char *>(malloc(sizeof(char) * 6));
 
-void printStrings()
-{
-    cout << "str1: " << str1 << endl;
-    cout << "str2: " << str2 << endl;
-    cout << "str: " << str << endl;
-}
 
 int main() {
     memcpy(str1, "Hello", sizeof("Hello"));
